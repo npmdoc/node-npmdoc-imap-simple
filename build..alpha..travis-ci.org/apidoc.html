@@ -1,0 +1,1507 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/chadxz/imap-simple#readme"
+
+    >imap-simple (v3.1.0)</a>
+</h1>
+<h4>Wrapper over node-imap, providing a simpler api for common use cases</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.imap-simple">module imap-simple</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple">
+            function <span class="apidocSignatureSpan">imap-simple.</span>ImapSimple
+            <span class="apidocSignatureSpan">(imap)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.connect">
+            function <span class="apidocSignatureSpan">imap-simple.</span>connect
+            <span class="apidocSignatureSpan">(options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.errors.ConnectionTimeoutError">
+            function <span class="apidocSignatureSpan">imap-simple.</span>errors.ConnectionTimeoutError
+            <span class="apidocSignatureSpan">(timeout)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.getParts">
+            function <span class="apidocSignatureSpan">imap-simple.</span>getParts
+            <span class="apidocSignatureSpan">(struct, parts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.parseHeader">
+            function <span class="apidocSignatureSpan">imap-simple.</span>parseHeader
+            <span class="apidocSignatureSpan">(str, noDecode)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">imap-simple.</span>ImapSimple.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">imap-simple.</span>errors</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">imap-simple.</span>imapSimple</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.imap-simple.ImapSimple">module imap-simple.ImapSimple</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple.ImapSimple">
+            function <span class="apidocSignatureSpan">imap-simple.</span>ImapSimple
+            <span class="apidocSignatureSpan">(imap)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple.super_">
+            function <span class="apidocSignatureSpan">imap-simple.ImapSimple.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.imap-simple.ImapSimple.prototype">module imap-simple.ImapSimple.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple.prototype.addFlags">
+            function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>addFlags
+            <span class="apidocSignatureSpan">(uid, flags, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple.prototype.addMessageLabel">
+            function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>addMessageLabel
+            <span class="apidocSignatureSpan">(source, labels, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple.prototype.delFlags">
+            function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>delFlags
+            <span class="apidocSignatureSpan">(uid, flags, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple.prototype.end">
+            function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>end
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple.prototype.getPartData">
+            function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>getPartData
+            <span class="apidocSignatureSpan">(message, part, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple.prototype.moveMessage">
+            function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>moveMessage
+            <span class="apidocSignatureSpan">(source, boxName, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple.prototype.openBox">
+            function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>openBox
+            <span class="apidocSignatureSpan">(boxName, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.ImapSimple.prototype.search">
+            function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>search
+            <span class="apidocSignatureSpan">(searchCriteria, fetchOptions, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.imap-simple.errors">module imap-simple.errors</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.errors.ConnectionTimeoutError">
+            function <span class="apidocSignatureSpan">imap-simple.errors.</span>ConnectionTimeoutError
+            <span class="apidocSignatureSpan">(timeout)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.imap-simple.errors.ConnectionTimeoutError">module imap-simple.errors.ConnectionTimeoutError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.errors.ConnectionTimeoutError.ConnectionTimeoutError">
+            function <span class="apidocSignatureSpan">imap-simple.errors.</span>ConnectionTimeoutError
+            <span class="apidocSignatureSpan">(timeout)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.errors.ConnectionTimeoutError.super_">
+            function <span class="apidocSignatureSpan">imap-simple.errors.ConnectionTimeoutError.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.imap-simple.imapSimple">module imap-simple.imapSimple</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.imapSimple.ImapSimple">
+            function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>ImapSimple
+            <span class="apidocSignatureSpan">(imap)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.imapSimple.connect">
+            function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>connect
+            <span class="apidocSignatureSpan">(options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.imapSimple.getParts">
+            function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>getParts
+            <span class="apidocSignatureSpan">(struct, parts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.imapSimple.parseHeader">
+            function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>parseHeader
+            <span class="apidocSignatureSpan">(str, noDecode)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>errors</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.imap-simple" id="apidoc.module.imap-simple">module imap-simple</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple" id="apidoc.element.imap-simple.ImapSimple">
+        function <span class="apidocSignatureSpan">imap-simple.</span>ImapSimple
+        <span class="apidocSignatureSpan">(imap)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ImapSimple(imap) {
+    var self = this;
+    self.imap = imap;
+
+    // flag to determine whether we should suppress ECONNRESET from bubbling up to listener
+    self.ending = false;
+
+    // pass most node-imap `Connection` events through 1:1
+    [&#x27;alert&#x27;, &#x27;mail&#x27;, &#x27;expunge&#x27;, &#x27;uidvalidity&#x27;, &#x27;update&#x27;, &#x27;close&#x27;, &#x27;end&#x27;].forEach(function (event) {
+        self.imap.on(event, self.emit.bind(self, event));
+    });
+
+    // special handling for `error` event
+    self.imap.on(&#x27;error&#x27;, function (err) {
+        // if .end() has been called and an &#x27;ECONNRESET&#x27; error is received, don&#x27;t bubble
+        if (err &#x26;&#x26; self.ending &#x26;&#x26; (err.code.toUpperCase() === &#x27;ECONNRESET&#x27;)) {
+            return;
+        }
+
+        self.emit(&#x27;error&#x27;, err);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.connect" id="apidoc.element.imap-simple.connect">
+        function <span class="apidocSignatureSpan">imap-simple.</span>connect
+        <span class="apidocSignatureSpan">(options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function connect(options, callback) {
+    options = options || {};
+    options.imap = options.imap || {};
+
+    // support old connectTimeout config option. Remove in v2.0.0
+    if (options.hasOwnProperty(&#x27;connectTimeout&#x27;)) {
+        console.warn(&#x27;[imap-simple] connect: options.connectTimeout is deprecated. &#x27; +
+            &#x27;Please use options.imap.authTimeout instead.&#x27;);
+        options.imap.authTimeout = options.connectTimeout;
+    }
+
+    // set default authTimeout
+    options.imap.authTimeout = options.imap.hasOwnProperty(&#x27;authTimeout&#x27;) ? options.imap.authTimeout : 2000;
+
+    if (callback) {
+        return nodeify(connect(options), callback);
+    }
+
+    return new Promise(function (resolve, reject) {
+        var imap = new Imap(options.imap);
+
+        function imapOnReady() {
+            imap.removeListener(&#x27;error&#x27;, imapOnError);
+            imap.removeListener(&#x27;close&#x27;, imapOnClose);
+            imap.removeListener(&#x27;end&#x27;, imapOnEnd);
+            resolve(new ImapSimple(imap));
+        }
+
+        function imapOnError(err) {
+            if (err.source === &#x27;timeout-auth&#x27;) {
+                err = new errors.ConnectionTimeoutError(options.imap.authTimeout);
+            }
+
+            imap.removeListener(&#x27;ready&#x27;, imapOnReady);
+            imap.removeListener(&#x27;close&#x27;, imapOnClose);
+            imap.removeListener(&#x27;end&#x27;, imapOnEnd);
+            reject(err);
+        }
+
+        function imapOnEnd() {
+            imap.removeListener(&#x27;ready&#x27;, imapOnReady);
+            imap.removeListener(&#x27;error&#x27;, imapOnError);
+            imap.removeListener(&#x27;close&#x27;, imapOnClose);
+            reject(new Error(&#x27;Connection ended unexpectedly&#x27;));
+        }
+
+        function imapOnClose() {
+            imap.removeListener(&#x27;ready&#x27;, imapOnReady);
+            imap.removeListener(&#x27;error&#x27;, imapOnError);
+            imap.removeListener(&#x27;end&#x27;, imapOnEnd);
+            reject(new Error(&#x27;Connection closed unexpectedly&#x27;));
+        }
+
+        imap.once(&#x27;ready&#x27;, imapOnReady);
+        imap.once(&#x27;error&#x27;, imapOnError);
+        imap.once(&#x27;close&#x27;, imapOnClose);
+        imap.once(&#x27;end&#x27;, imapOnEnd);
+
+        if (options.hasOwnProperty(&#x27;onmail&#x27;)) {
+            imap.on(&#x27;mail&#x27;, options.onmail);
+        }
+
+        if (options.hasOwnProperty(&#x27;onexpunge&#x27;)) {
+            imap.on(&#x27;expunge&#x27;, options.onexpunge);
+        }
+
+        if (options.hasOwnProperty(&#x27;onupdate&#x27;)) {
+            imap.on(&#x27;update&#x27;, options.onupdate);
+        }
+
+        imap.connect();
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+host: &#x27;imap.gmail.com&#x27;,
+port: 993,
+tls: true,
+authTimeout: 3000
+    }
+};
+
+imaps.<span class="apidocCodeKeywordSpan">connect</span>(config).then(function (connection) {
+
+    return connection.openBox(&#x27;INBOX&#x27;).then(function () {
+var searchCriteria = [
+    &#x27;UNSEEN&#x27;
+];
+
+var fetchOptions = {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.errors.ConnectionTimeoutError" id="apidoc.element.imap-simple.errors.ConnectionTimeoutError">
+        function <span class="apidocSignatureSpan">imap-simple.</span>errors.ConnectionTimeoutError
+        <span class="apidocSignatureSpan">(timeout)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ConnectionTimeoutError(timeout) {
+    Error.call(this);
+    Error.captureStackTrace(this, this.constructor);
+    this.message = &#x27;connection timed out&#x27;;
+
+    if (timeout) {
+        this.message += &#x27;. timeout = &#x27; + timeout + &#x27; ms&#x27;;
+    }
+
+    this.name = &#x27;ConnectionTimeoutError&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.getParts" id="apidoc.element.imap-simple.getParts">
+        function <span class="apidocSignatureSpan">imap-simple.</span>getParts
+        <span class="apidocSignatureSpan">(struct, parts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getParts(struct, parts) {
+    parts = parts || [];
+    for (var i = 0; i &#x3c; struct.length; i++) {
+        if (Array.isArray(struct[i])) {
+            getParts(struct[i], parts);
+        } else if (struct[i].partID) {
+            parts.push(struct[i]);
+        }
+    }
+    return parts;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// retrieve only the headers of the messages
+return connection.search(searchCriteria, fetchOptions);
+    }).then(function (messages) {
+
+var attachments = [];
+
+messages.forEach(function (message) {
+    var parts = imaps.<span class="apidocCodeKeywordSpan">getParts</span>(message.attributes.struct);
+    attachments = attachments.concat(parts.filter(function (part) {
+        return part.disposition &#x26;&#x26; part.disposition.type === &#x27;ATTACHMENT&#x27;;
+    }).map(function (part) {
+        // retrieve the attachments only of the messages with attachments
+        return connection.getPartData(message, part)
+            .then(function (partData) {
+                return {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.parseHeader" id="apidoc.element.imap-simple.parseHeader">
+        function <span class="apidocSignatureSpan">imap-simple.</span>parseHeader
+        <span class="apidocSignatureSpan">(str, noDecode)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseHeader(str, noDecode) {
+  var lines = str.split(RE_CRLF),
+      len = lines.length,
+      header = {},
+      state = {
+        buffer: undefined,
+        encoding: undefined,
+        consecutive: false,
+        replaces: undefined,
+        curReplace: undefined,
+        remainder: undefined
+      },
+      m, h, i, val;
+
+  for (i = 0; i &#x3c; len; ++i) {
+    if (lines[i].length === 0)
+      break; // empty line separates message&#x27;s header and body
+    if (lines[i][0] === &#x27;\t&#x27; || lines[i][0] === &#x27; &#x27;) {
+      if (!Array.isArray(header[h]))
+        continue; // ignore invalid first line
+      // folded header content
+      val = lines[i];
+      if (!noDecode) {
+        if (RE_ENCWORD_END.test(lines[i - 1])
+            &#x26;&#x26; RE_ENCWORD_BEGIN.test(val)) {
+          // RFC2047 says to *ignore* leading whitespace in folded header values
+          // for adjacent encoded-words ...
+          val = val.substring(1);
+        }
+      }
+      header[h][header[h].length - 1] += val;
+    } else {
+      m = RE_HDR.exec(lines[i]);
+      if (m) {
+        h = m[1].toLowerCase().trim();
+        if (m[2]) {
+          if (header[h] === undefined)
+            header[h] = [m[2]];
+          else
+            header[h].push(m[2]);
+        } else
+          header[h] = [&#x27;&#x27;];
+      } else
+        break;
+    }
+  }
+  if (!noDecode) {
+    var hvs;
+    for (h in header) {
+      hvs = header[h];
+      for (i = 0, len = header[h].length; i &#x3c; len; ++i)
+        hvs[i] = decodeWords(hvs[i], state);
+    }
+  }
+
+  return header;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        var part = {
+            which: info.which,
+            size: info.size,
+            body: body
+        };
+
+        if (isHeader.test(part.which)) {
+            part.body = Imap.<span class="apidocCodeKeywordSpan">parseHeader</span>(part.body);
+        }
+
+        messageParts.push(part);
+    });
+}
+
+function messageOnAttributes(attrs) {
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.imap-simple.ImapSimple" id="apidoc.module.imap-simple.ImapSimple">module imap-simple.ImapSimple</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple.ImapSimple" id="apidoc.element.imap-simple.ImapSimple.ImapSimple">
+        function <span class="apidocSignatureSpan">imap-simple.</span>ImapSimple
+        <span class="apidocSignatureSpan">(imap)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ImapSimple(imap) {
+    var self = this;
+    self.imap = imap;
+
+    // flag to determine whether we should suppress ECONNRESET from bubbling up to listener
+    self.ending = false;
+
+    // pass most node-imap `Connection` events through 1:1
+    [&#x27;alert&#x27;, &#x27;mail&#x27;, &#x27;expunge&#x27;, &#x27;uidvalidity&#x27;, &#x27;update&#x27;, &#x27;close&#x27;, &#x27;end&#x27;].forEach(function (event) {
+        self.imap.on(event, self.emit.bind(self, event));
+    });
+
+    // special handling for `error` event
+    self.imap.on(&#x27;error&#x27;, function (err) {
+        // if .end() has been called and an &#x27;ECONNRESET&#x27; error is received, don&#x27;t bubble
+        if (err &#x26;&#x26; self.ending &#x26;&#x26; (err.code.toUpperCase() === &#x27;ECONNRESET&#x27;)) {
+            return;
+        }
+
+        self.emit(&#x27;error&#x27;, err);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple.super_" id="apidoc.element.imap-simple.ImapSimple.super_">
+        function <span class="apidocSignatureSpan">imap-simple.ImapSimple.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.imap-simple.ImapSimple.prototype" id="apidoc.module.imap-simple.ImapSimple.prototype">module imap-simple.ImapSimple.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple.prototype.addFlags" id="apidoc.element.imap-simple.ImapSimple.prototype.addFlags">
+        function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>addFlags
+        <span class="apidocSignatureSpan">(uid, flags, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addFlags = function (uid, flags, callback) {
+    var self = this;
+
+    if (callback) {
+        return nodeify(self.addFlags(uid, flags), callback);
+    }
+
+    return new Promise(function (resolve, reject) {
+        self.imap.addFlags(uid, flags, function (err) {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve();
+        });
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @returns {undefined|Promise} Returns a promise when no callback is specified, resolving when the action succeeds.
+ * @memberof ImapSimple
+ */
+ImapSimple.prototype.addFlags = function (uid, flags, callback) {
+var self = this;
+
+if (callback) {
+    return nodeify(self.<span class="apidocCodeKeywordSpan">addFlags</span>(uid, flags), callback);
+}
+
+return new Promise(function (resolve, reject) {
+    self.imap.addFlags(uid, flags, function (err) {
+        if (err) {
+            reject(err);
+            return;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple.prototype.addMessageLabel" id="apidoc.element.imap-simple.ImapSimple.prototype.addMessageLabel">
+        function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>addMessageLabel
+        <span class="apidocSignatureSpan">(source, labels, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addMessageLabel = function (source, labels, callback) {
+    var self = this;
+
+    if (callback) {
+        return nodeify(self.addMessageLabel(source, labels), callback);
+    }
+
+    return new Promise(function (resolve, reject) {
+        self.imap.addLabels(source, labels, function (err) {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve();
+        });
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @returns {undefined|Promise} Returns a promise when no callback is specified, resolving when the action succeeds.
+ * @memberof ImapSimple
+ */
+ImapSimple.prototype.addMessageLabel = function (source, labels, callback) {
+var self = this;
+
+if (callback) {
+    return nodeify(self.<span class="apidocCodeKeywordSpan">addMessageLabel</span>(source, labels), callback);
+}
+
+return new Promise(function (resolve, reject) {
+    self.imap.addLabels(source, labels, function (err) {
+        if (err) {
+            reject(err);
+            return;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple.prototype.delFlags" id="apidoc.element.imap-simple.ImapSimple.prototype.delFlags">
+        function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>delFlags
+        <span class="apidocSignatureSpan">(uid, flags, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">delFlags = function (uid, flags, callback) {
+    var self = this;
+
+    if (callback) {
+        return nodeify(self.delFlags(uid, flags), callback);
+    }
+
+    return new Promise(function (resolve, reject) {
+        self.imap.delFlags(uid, flags, function (err) {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve();
+        });
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @returns {undefined|Promise} Returns a promise when no callback is specified, resolving when the action succeeds.
+ * @memberof ImapSimple
+ */
+ImapSimple.prototype.delFlags = function (uid, flags, callback) {
+var self = this;
+
+if (callback) {
+    return nodeify(self.<span class="apidocCodeKeywordSpan">delFlags</span>(uid, flags), callback);
+}
+
+return new Promise(function (resolve, reject) {
+    self.imap.delFlags(uid, flags, function (err) {
+        if (err) {
+            reject(err);
+            return;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple.prototype.end" id="apidoc.element.imap-simple.ImapSimple.prototype.end">
+        function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>end
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function () {
+    var self = this;
+
+    // set state flag to suppress &#x27;ECONNRESET&#x27; errors that are triggered when .end() is called.
+    // it is a known issue that has no known fix. This just temporarily ignores that error.
+    // https://github.com/mscdex/node-imap/issues/391
+    // https://github.com/mscdex/node-imap/issues/395
+    self.ending = true;
+
+    // using &#x27;close&#x27; event to unbind ECONNRESET error handler, because the node-imap
+    // maintainer claims it is the more reliable event between &#x27;end&#x27; and &#x27;close&#x27;.
+    // https://github.com/mscdex/node-imap/issues/394
+    self.imap.once(&#x27;close&#x27;, function () {
+        self.ending = false;
+    });
+
+    self.imap.end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    // pass most node-imap `Connection` events through 1:1
+    [&#x27;alert&#x27;, &#x27;mail&#x27;, &#x27;expunge&#x27;, &#x27;uidvalidity&#x27;, &#x27;update&#x27;, &#x27;close&#x27;, &#
+x27;end&#x27;].forEach(function (event) {
+        self.imap.on(event, self.emit.bind(self, event));
+    });
+
+    // special handling for `error` event
+    self.imap.on(&#x27;error&#x27;, function (err) {
+        // if .<span class="apidocCodeKeywordSpan">end</span>() has been called and an &#x27;ECONNRESET&#x27; error is received,
+don&#x27;t bubble
+        if (err &#x26;&#x26; self.ending &#x26;&#x26; (err.code.toUpperCase() === &#x27;ECONNRESET&#x27;)) {
+            return;
+        }
+
+        self.emit(&#x27;error&#x27;, err);
+    });
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple.prototype.getPartData" id="apidoc.element.imap-simple.ImapSimple.prototype.getPartData">
+        function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>getPartData
+        <span class="apidocSignatureSpan">(message, part, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getPartData = function (message, part, callback) {
+    var self = this;
+
+    if (callback) {
+        return nodeify(self.getPartData(message, part), callback);
+    }
+
+    return new Promise(function (resolve, reject) {
+        var fetch = self.imap.fetch(message.attributes.uid, {
+            bodies: [part.partID],
+            struct: true
+        });
+
+        function fetchOnMessage(msg) {
+            getMessage(msg).then(function (result) {
+                if (result.parts.length !== 1) {
+                    reject(new Error(&#x27;Got &#x27; + result.parts.length + &#x27; parts, should get 1&#x27;));
+                    return;
+                }
+
+                var data = result.parts[0].body;
+
+                var encoding = part.encoding.toUpperCase();
+
+                if (encoding === &#x27;BASE64&#x27;) {
+                    resolve(new Buffer(data, &#x27;base64&#x27;));
+                    return;
+                }
+
+                if (encoding === &#x27;QUOTED-PRINTABLE&#x27;) {
+                    if (part.params &#x26;&#x26; part.params.charset &#x26;&#x26;
+                        part.params.charset.toUpperCase() === &#x27;UTF-8&#x27;) {
+                        resolve((new Buffer(utf8.decode(qp.decode(data)))).toString());
+                    } else {
+                        resolve((new Buffer(qp.decode(data))).toString());
+                    }
+                    return;
+                }
+
+                if (encoding === &#x27;7BIT&#x27;) {
+                    resolve((new Buffer(data)).toString(&#x27;ascii&#x27;));
+                    return;
+                }
+
+                if (encoding === &#x27;8BIT&#x27; || encoding === &#x27;BINARY&#x27;) {
+                    var charset = (part.params &#x26;&#x26; part.params.charset) || &#x27;utf-8&#x27;;
+                    resolve(iconvlite.decode(new Buffer(data), charset));
+                    return;
+                }
+
+                // if it gets here, the encoding is not currently supported
+                reject(new Error(&#x27;Unknown encoding &#x27; + part.encoding));
+            });
+        }
+
+        function fetchOnError(err) {
+            fetch.removeListener(&#x27;message&#x27;, fetchOnMessage);
+            fetch.removeListener(&#x27;end&#x27;, fetchOnEnd);
+            reject(err);
+        }
+
+        function fetchOnEnd() {
+            fetch.removeListener(&#x27;message&#x27;, fetchOnMessage);
+            fetch.removeListener(&#x27;error&#x27;, fetchOnError);
+        }
+
+        fetch.once(&#x27;message&#x27;, fetchOnMessage);
+        fetch.once(&#x27;error&#x27;, fetchOnError);
+        fetch.once(&#x27;end&#x27;, fetchOnEnd);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+        messages.forEach(function (message) {
+var parts = imaps.getParts(message.attributes.struct);
+attachments = attachments.concat(parts.filter(function (part) {
+    return part.disposition &#x26;&#x26; part.disposition.type === &#x27;ATTACHMENT&#x27;;
+}).map(function (part) {
+    // retrieve the attachments only of the messages with attachments
+    return connection.<span class="apidocCodeKeywordSpan">getPartData</span>(message, part)
+        .then(function (partData) {
+            return {
+                filename: part.disposition.params.filename,
+                data: partData
+            };
+        });
+}));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple.prototype.moveMessage" id="apidoc.element.imap-simple.ImapSimple.prototype.moveMessage">
+        function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>moveMessage
+        <span class="apidocSignatureSpan">(source, boxName, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">moveMessage = function (source, boxName, callback) {
+    var self = this;
+
+    if (callback) {
+        return nodeify(self.moveMessage(source, boxName), callback);
+    }
+
+    return new Promise(function (resolve, reject) {
+        self.imap.move(source, boxName, function (err) {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve();
+        });
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @returns {undefined|Promise} Returns a promise when no callback is specified, resolving when the action succeeds.
+ * @memberof ImapSimple
+ */
+ImapSimple.prototype.moveMessage = function (source, boxName, callback) {
+var self = this;
+
+if (callback) {
+    return nodeify(self.<span class="apidocCodeKeywordSpan">moveMessage</span>(source, boxName), callback);
+}
+
+return new Promise(function (resolve, reject) {
+    self.imap.move(source, boxName, function (err) {
+        if (err) {
+            reject(err);
+            return;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple.prototype.openBox" id="apidoc.element.imap-simple.ImapSimple.prototype.openBox">
+        function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>openBox
+        <span class="apidocSignatureSpan">(boxName, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">openBox = function (boxName, callback) {
+    var self = this;
+
+    if (callback) {
+        return nodeify(this.openBox(boxName), callback);
+    }
+
+    return new Promise(function (resolve, reject) {
+
+        self.imap.openBox(boxName, function (err, result) {
+
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve(result);
+        });
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+tls: true,
+authTimeout: 3000
+    }
+};
+
+imaps.connect(config).then(function (connection) {
+
+    return connection.<span class="apidocCodeKeywordSpan">openBox</span>(&#x27;INBOX&#x27;).then(function () {
+var searchCriteria = [
+    &#x27;UNSEEN&#x27;
+];
+
+var fetchOptions = {
+    bodies: [&#x27;HEADER&#x27;, &#x27;TEXT&#x27;],
+    markSeen: false
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.ImapSimple.prototype.search" id="apidoc.element.imap-simple.ImapSimple.prototype.search">
+        function <span class="apidocSignatureSpan">imap-simple.ImapSimple.prototype.</span>search
+        <span class="apidocSignatureSpan">(searchCriteria, fetchOptions, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">search = function (searchCriteria, fetchOptions, callback) {
+    var self = this;
+
+    if (!callback &#x26;&#x26; typeof fetchOptions === &#x27;function&#x27;) {
+        callback = fetchOptions;
+        fetchOptions = null;
+    }
+
+    if (callback) {
+        return nodeify(this.search(searchCriteria, fetchOptions), callback);
+    }
+
+    return new Promise(function (resolve, reject) {
+
+        self.imap.search(searchCriteria, function (err, uids) {
+
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            if (!uids.length) {
+                resolve([]);
+                return;
+            }
+
+            var fetch = self.imap.fetch(uids, fetchOptions);
+            var messagesRetrieved = 0;
+            var messages = [];
+
+            function fetchOnMessage(message, seqNo) {
+                getMessage(message).then(function (message) {
+                    message.seqNo = seqNo;
+                    messages[seqNo] = message;
+
+                    messagesRetrieved++;
+                    if (messagesRetrieved === uids.length) {
+                        fetchCompleted();
+                    }
+                });
+            }
+
+            function fetchCompleted() {
+                // pare array down while keeping messages in order
+                var pared = messages.filter(function (m) { return !!m; });
+                resolve(pared);
+            }
+
+            function fetchOnError(err) {
+                fetch.removeListener(&#x27;message&#x27;, fetchOnMessage);
+                fetch.removeListener(&#x27;end&#x27;, fetchOnEnd);
+                reject(err);
+            }
+
+            function fetchOnEnd() {
+                fetch.removeListener(&#x27;message&#x27;, fetchOnMessage);
+                fetch.removeListener(&#x27;error&#x27;, fetchOnError);
+            }
+
+            fetch.on(&#x27;message&#x27;, fetchOnMessage);
+            fetch.once(&#x27;error&#x27;, fetchOnError);
+            fetch.once(&#x27;end&#x27;, fetchOnEnd);
+        });
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        ];
+
+        var fetchOptions = {
+bodies: [&#x27;HEADER&#x27;, &#x27;TEXT&#x27;],
+markSeen: false
+        };
+
+        return connection.<span class="apidocCodeKeywordSpan">search</span>(searchCriteria, fetchOptions).then(function (results
+) {
+var subjects = results.map(function (res) {
+    return res.parts.filter(function (part) {
+        return part.which === &#x27;HEADER&#x27;;
+    })[0].body.subject[0];
+});
+
+console.log(subjects);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.imap-simple.errors" id="apidoc.module.imap-simple.errors">module imap-simple.errors</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.errors.ConnectionTimeoutError" id="apidoc.element.imap-simple.errors.ConnectionTimeoutError">
+        function <span class="apidocSignatureSpan">imap-simple.errors.</span>ConnectionTimeoutError
+        <span class="apidocSignatureSpan">(timeout)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ConnectionTimeoutError(timeout) {
+    Error.call(this);
+    Error.captureStackTrace(this, this.constructor);
+    this.message = &#x27;connection timed out&#x27;;
+
+    if (timeout) {
+        this.message += &#x27;. timeout = &#x27; + timeout + &#x27; ms&#x27;;
+    }
+
+    this.name = &#x27;ConnectionTimeoutError&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    imap.removeListener(&#x27;close&#x27;, imapOnClose);
+    imap.removeListener(&#x27;end&#x27;, imapOnEnd);
+    resolve(new ImapSimple(imap));
+}
+
+function imapOnError(err) {
+    if (err.source === &#x27;timeout-auth&#x27;) {
+        err = new errors.<span class="apidocCodeKeywordSpan">ConnectionTimeoutError</span>(options.imap.authTimeout);
+    }
+
+    imap.removeListener(&#x27;ready&#x27;, imapOnReady);
+    imap.removeListener(&#x27;close&#x27;, imapOnClose);
+    imap.removeListener(&#x27;end&#x27;, imapOnEnd);
+    reject(err);
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.imap-simple.errors.ConnectionTimeoutError" id="apidoc.module.imap-simple.errors.ConnectionTimeoutError">module imap-simple.errors.ConnectionTimeoutError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.errors.ConnectionTimeoutError.ConnectionTimeoutError" id="apidoc.element.imap-simple.errors.ConnectionTimeoutError.ConnectionTimeoutError">
+        function <span class="apidocSignatureSpan">imap-simple.errors.</span>ConnectionTimeoutError
+        <span class="apidocSignatureSpan">(timeout)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ConnectionTimeoutError(timeout) {
+    Error.call(this);
+    Error.captureStackTrace(this, this.constructor);
+    this.message = &#x27;connection timed out&#x27;;
+
+    if (timeout) {
+        this.message += &#x27;. timeout = &#x27; + timeout + &#x27; ms&#x27;;
+    }
+
+    this.name = &#x27;ConnectionTimeoutError&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    imap.removeListener(&#x27;close&#x27;, imapOnClose);
+    imap.removeListener(&#x27;end&#x27;, imapOnEnd);
+    resolve(new ImapSimple(imap));
+}
+
+function imapOnError(err) {
+    if (err.source === &#x27;timeout-auth&#x27;) {
+        err = new errors.<span class="apidocCodeKeywordSpan">ConnectionTimeoutError</span>(options.imap.authTimeout);
+    }
+
+    imap.removeListener(&#x27;ready&#x27;, imapOnReady);
+    imap.removeListener(&#x27;close&#x27;, imapOnClose);
+    imap.removeListener(&#x27;end&#x27;, imapOnEnd);
+    reject(err);
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.errors.ConnectionTimeoutError.super_" id="apidoc.element.imap-simple.errors.ConnectionTimeoutError.super_">
+        function <span class="apidocSignatureSpan">imap-simple.errors.ConnectionTimeoutError.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Error() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.imap-simple.imapSimple" id="apidoc.module.imap-simple.imapSimple">module imap-simple.imapSimple</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.imapSimple.ImapSimple" id="apidoc.element.imap-simple.imapSimple.ImapSimple">
+        function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>ImapSimple
+        <span class="apidocSignatureSpan">(imap)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ImapSimple(imap) {
+    var self = this;
+    self.imap = imap;
+
+    // flag to determine whether we should suppress ECONNRESET from bubbling up to listener
+    self.ending = false;
+
+    // pass most node-imap `Connection` events through 1:1
+    [&#x27;alert&#x27;, &#x27;mail&#x27;, &#x27;expunge&#x27;, &#x27;uidvalidity&#x27;, &#x27;update&#x27;, &#x27;close&#x27;, &#x27;end&#x27;].forEach(function (event) {
+        self.imap.on(event, self.emit.bind(self, event));
+    });
+
+    // special handling for `error` event
+    self.imap.on(&#x27;error&#x27;, function (err) {
+        // if .end() has been called and an &#x27;ECONNRESET&#x27; error is received, don&#x27;t bubble
+        if (err &#x26;&#x26; self.ending &#x26;&#x26; (err.code.toUpperCase() === &#x27;ECONNRESET&#x27;)) {
+            return;
+        }
+
+        self.emit(&#x27;error&#x27;, err);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.imapSimple.connect" id="apidoc.element.imap-simple.imapSimple.connect">
+        function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>connect
+        <span class="apidocSignatureSpan">(options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function connect(options, callback) {
+    options = options || {};
+    options.imap = options.imap || {};
+
+    // support old connectTimeout config option. Remove in v2.0.0
+    if (options.hasOwnProperty(&#x27;connectTimeout&#x27;)) {
+        console.warn(&#x27;[imap-simple] connect: options.connectTimeout is deprecated. &#x27; +
+            &#x27;Please use options.imap.authTimeout instead.&#x27;);
+        options.imap.authTimeout = options.connectTimeout;
+    }
+
+    // set default authTimeout
+    options.imap.authTimeout = options.imap.hasOwnProperty(&#x27;authTimeout&#x27;) ? options.imap.authTimeout : 2000;
+
+    if (callback) {
+        return nodeify(connect(options), callback);
+    }
+
+    return new Promise(function (resolve, reject) {
+        var imap = new Imap(options.imap);
+
+        function imapOnReady() {
+            imap.removeListener(&#x27;error&#x27;, imapOnError);
+            imap.removeListener(&#x27;close&#x27;, imapOnClose);
+            imap.removeListener(&#x27;end&#x27;, imapOnEnd);
+            resolve(new ImapSimple(imap));
+        }
+
+        function imapOnError(err) {
+            if (err.source === &#x27;timeout-auth&#x27;) {
+                err = new errors.ConnectionTimeoutError(options.imap.authTimeout);
+            }
+
+            imap.removeListener(&#x27;ready&#x27;, imapOnReady);
+            imap.removeListener(&#x27;close&#x27;, imapOnClose);
+            imap.removeListener(&#x27;end&#x27;, imapOnEnd);
+            reject(err);
+        }
+
+        function imapOnEnd() {
+            imap.removeListener(&#x27;ready&#x27;, imapOnReady);
+            imap.removeListener(&#x27;error&#x27;, imapOnError);
+            imap.removeListener(&#x27;close&#x27;, imapOnClose);
+            reject(new Error(&#x27;Connection ended unexpectedly&#x27;));
+        }
+
+        function imapOnClose() {
+            imap.removeListener(&#x27;ready&#x27;, imapOnReady);
+            imap.removeListener(&#x27;error&#x27;, imapOnError);
+            imap.removeListener(&#x27;end&#x27;, imapOnEnd);
+            reject(new Error(&#x27;Connection closed unexpectedly&#x27;));
+        }
+
+        imap.once(&#x27;ready&#x27;, imapOnReady);
+        imap.once(&#x27;error&#x27;, imapOnError);
+        imap.once(&#x27;close&#x27;, imapOnClose);
+        imap.once(&#x27;end&#x27;, imapOnEnd);
+
+        if (options.hasOwnProperty(&#x27;onmail&#x27;)) {
+            imap.on(&#x27;mail&#x27;, options.onmail);
+        }
+
+        if (options.hasOwnProperty(&#x27;onexpunge&#x27;)) {
+            imap.on(&#x27;expunge&#x27;, options.onexpunge);
+        }
+
+        if (options.hasOwnProperty(&#x27;onupdate&#x27;)) {
+            imap.on(&#x27;update&#x27;, options.onupdate);
+        }
+
+        imap.connect();
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+host: &#x27;imap.gmail.com&#x27;,
+port: 993,
+tls: true,
+authTimeout: 3000
+    }
+};
+
+imaps.<span class="apidocCodeKeywordSpan">connect</span>(config).then(function (connection) {
+
+    return connection.openBox(&#x27;INBOX&#x27;).then(function () {
+var searchCriteria = [
+    &#x27;UNSEEN&#x27;
+];
+
+var fetchOptions = {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.imapSimple.getParts" id="apidoc.element.imap-simple.imapSimple.getParts">
+        function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>getParts
+        <span class="apidocSignatureSpan">(struct, parts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getParts(struct, parts) {
+    parts = parts || [];
+    for (var i = 0; i &#x3c; struct.length; i++) {
+        if (Array.isArray(struct[i])) {
+            getParts(struct[i], parts);
+        } else if (struct[i].partID) {
+            parts.push(struct[i]);
+        }
+    }
+    return parts;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// retrieve only the headers of the messages
+return connection.search(searchCriteria, fetchOptions);
+    }).then(function (messages) {
+
+var attachments = [];
+
+messages.forEach(function (message) {
+    var parts = imaps.<span class="apidocCodeKeywordSpan">getParts</span>(message.attributes.struct);
+    attachments = attachments.concat(parts.filter(function (part) {
+        return part.disposition &#x26;&#x26; part.disposition.type === &#x27;ATTACHMENT&#x27;;
+    }).map(function (part) {
+        // retrieve the attachments only of the messages with attachments
+        return connection.getPartData(message, part)
+            .then(function (partData) {
+                return {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.imap-simple.imapSimple.parseHeader" id="apidoc.element.imap-simple.imapSimple.parseHeader">
+        function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>parseHeader
+        <span class="apidocSignatureSpan">(str, noDecode)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseHeader(str, noDecode) {
+  var lines = str.split(RE_CRLF),
+      len = lines.length,
+      header = {},
+      state = {
+        buffer: undefined,
+        encoding: undefined,
+        consecutive: false,
+        replaces: undefined,
+        curReplace: undefined,
+        remainder: undefined
+      },
+      m, h, i, val;
+
+  for (i = 0; i &#x3c; len; ++i) {
+    if (lines[i].length === 0)
+      break; // empty line separates message&#x27;s header and body
+    if (lines[i][0] === &#x27;\t&#x27; || lines[i][0] === &#x27; &#x27;) {
+      if (!Array.isArray(header[h]))
+        continue; // ignore invalid first line
+      // folded header content
+      val = lines[i];
+      if (!noDecode) {
+        if (RE_ENCWORD_END.test(lines[i - 1])
+            &#x26;&#x26; RE_ENCWORD_BEGIN.test(val)) {
+          // RFC2047 says to *ignore* leading whitespace in folded header values
+          // for adjacent encoded-words ...
+          val = val.substring(1);
+        }
+      }
+      header[h][header[h].length - 1] += val;
+    } else {
+      m = RE_HDR.exec(lines[i]);
+      if (m) {
+        h = m[1].toLowerCase().trim();
+        if (m[2]) {
+          if (header[h] === undefined)
+            header[h] = [m[2]];
+          else
+            header[h].push(m[2]);
+        } else
+          header[h] = [&#x27;&#x27;];
+      } else
+        break;
+    }
+  }
+  if (!noDecode) {
+    var hvs;
+    for (h in header) {
+      hvs = header[h];
+      for (i = 0, len = header[h].length; i &#x3c; len; ++i)
+        hvs[i] = decodeWords(hvs[i], state);
+    }
+  }
+
+  return header;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        var part = {
+            which: info.which,
+            size: info.size,
+            body: body
+        };
+
+        if (isHeader.test(part.which)) {
+            part.body = Imap.<span class="apidocCodeKeywordSpan">parseHeader</span>(part.body);
+        }
+
+        messageParts.push(part);
+    });
+}
+
+function messageOnAttributes(attrs) {
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
