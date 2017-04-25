@@ -118,12 +118,6 @@
 
         </li>
 
-        <li>
-
-            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">imap-simple.</span>imapSimple</span>
-
-        </li>
-
     </ol></li>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.imap-simple.ImapSimple">module imap-simple.ImapSimple</a><ol>
@@ -254,52 +248,6 @@
             function <span class="apidocSignatureSpan">imap-simple.errors.ConnectionTimeoutError.</span>super_
             <span class="apidocSignatureSpan">()</span>
             </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.imap-simple.imapSimple">module imap-simple.imapSimple</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.imapSimple.ImapSimple">
-            function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>ImapSimple
-            <span class="apidocSignatureSpan">(imap)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.imapSimple.connect">
-            function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>connect
-            <span class="apidocSignatureSpan">(options, callback)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.imapSimple.getParts">
-            function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>getParts
-            <span class="apidocSignatureSpan">(struct, parts)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.imap-simple.imapSimple.parseHeader">
-            function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>parseHeader
-            <span class="apidocSignatureSpan">(str, noDecode)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>errors</span>
 
         </li>
 
@@ -596,8 +544,6 @@ function messageOnAttributes(attrs) {
 
 
 
-
-
 </div>
 
 <div class="apidocSectionDiv">
@@ -822,23 +768,21 @@ return new Promise(function (resolve, reject) {
     self.imap.end();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    // pass most node-imap `Connection` events through 1:1
-    [&#x27;alert&#x27;, &#x27;mail&#x27;, &#x27;expunge&#x27;, &#x27;uidvalidity&#x27;, &#x27;update&#x27;, &#x27;close&#x27;, &#
-x27;end&#x27;].forEach(function (event) {
-        self.imap.on(event, self.emit.bind(self, event));
-    });
 
-    // special handling for `error` event
-    self.imap.on(&#x27;error&#x27;, function (err) {
-        // if .<span class="apidocCodeKeywordSpan">end</span>() has been called and an &#x27;ECONNRESET&#x27; error is received,
-don&#x27;t bubble
-        if (err &#x26;&#x26; self.ending &#x26;&#x26; (err.code.toUpperCase() === &#x27;ECONNRESET&#x27;)) {
-            return;
-        }
+- made `ImapSimple` an event emitter
 
-        self.emit(&#x27;error&#x27;, err);
-    });
-}
+## 1.1.2 - 2015-03-02
+
+#### Fixed
+
+- Put ECONNRESET error in better place, and only ignored error when calling .<span class="apidocCodeKeywordSpan">end</span>()
+- &#x27;ready&#x27; and &#x27;error&#x27; event handlers will now only fire once when connecting
+
+## 1.1.1 - 2015-02-27
+
+#### Fixed
+
+- Put in basic fix for ECONNRESET error when calling .end()
 ...</pre></li>
     </ul>
 
@@ -1229,272 +1173,6 @@ function imapOnError(err) {
     <li>description and source-code<pre class="apidocCodePre">function Error() { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.imap-simple.imapSimple" id="apidoc.module.imap-simple.imapSimple">module imap-simple.imapSimple</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.imap-simple.imapSimple.ImapSimple" id="apidoc.element.imap-simple.imapSimple.ImapSimple">
-        function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>ImapSimple
-        <span class="apidocSignatureSpan">(imap)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function ImapSimple(imap) {
-    var self = this;
-    self.imap = imap;
-
-    // flag to determine whether we should suppress ECONNRESET from bubbling up to listener
-    self.ending = false;
-
-    // pass most node-imap `Connection` events through 1:1
-    [&#x27;alert&#x27;, &#x27;mail&#x27;, &#x27;expunge&#x27;, &#x27;uidvalidity&#x27;, &#x27;update&#x27;, &#x27;close&#x27;, &#x27;end&#x27;].forEach(function (event) {
-        self.imap.on(event, self.emit.bind(self, event));
-    });
-
-    // special handling for `error` event
-    self.imap.on(&#x27;error&#x27;, function (err) {
-        // if .end() has been called and an &#x27;ECONNRESET&#x27; error is received, don&#x27;t bubble
-        if (err &#x26;&#x26; self.ending &#x26;&#x26; (err.code.toUpperCase() === &#x27;ECONNRESET&#x27;)) {
-            return;
-        }
-
-        self.emit(&#x27;error&#x27;, err);
-    });
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.imap-simple.imapSimple.connect" id="apidoc.element.imap-simple.imapSimple.connect">
-        function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>connect
-        <span class="apidocSignatureSpan">(options, callback)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function connect(options, callback) {
-    options = options || {};
-    options.imap = options.imap || {};
-
-    // support old connectTimeout config option. Remove in v2.0.0
-    if (options.hasOwnProperty(&#x27;connectTimeout&#x27;)) {
-        console.warn(&#x27;[imap-simple] connect: options.connectTimeout is deprecated. &#x27; +
-            &#x27;Please use options.imap.authTimeout instead.&#x27;);
-        options.imap.authTimeout = options.connectTimeout;
-    }
-
-    // set default authTimeout
-    options.imap.authTimeout = options.imap.hasOwnProperty(&#x27;authTimeout&#x27;) ? options.imap.authTimeout : 2000;
-
-    if (callback) {
-        return nodeify(connect(options), callback);
-    }
-
-    return new Promise(function (resolve, reject) {
-        var imap = new Imap(options.imap);
-
-        function imapOnReady() {
-            imap.removeListener(&#x27;error&#x27;, imapOnError);
-            imap.removeListener(&#x27;close&#x27;, imapOnClose);
-            imap.removeListener(&#x27;end&#x27;, imapOnEnd);
-            resolve(new ImapSimple(imap));
-        }
-
-        function imapOnError(err) {
-            if (err.source === &#x27;timeout-auth&#x27;) {
-                err = new errors.ConnectionTimeoutError(options.imap.authTimeout);
-            }
-
-            imap.removeListener(&#x27;ready&#x27;, imapOnReady);
-            imap.removeListener(&#x27;close&#x27;, imapOnClose);
-            imap.removeListener(&#x27;end&#x27;, imapOnEnd);
-            reject(err);
-        }
-
-        function imapOnEnd() {
-            imap.removeListener(&#x27;ready&#x27;, imapOnReady);
-            imap.removeListener(&#x27;error&#x27;, imapOnError);
-            imap.removeListener(&#x27;close&#x27;, imapOnClose);
-            reject(new Error(&#x27;Connection ended unexpectedly&#x27;));
-        }
-
-        function imapOnClose() {
-            imap.removeListener(&#x27;ready&#x27;, imapOnReady);
-            imap.removeListener(&#x27;error&#x27;, imapOnError);
-            imap.removeListener(&#x27;end&#x27;, imapOnEnd);
-            reject(new Error(&#x27;Connection closed unexpectedly&#x27;));
-        }
-
-        imap.once(&#x27;ready&#x27;, imapOnReady);
-        imap.once(&#x27;error&#x27;, imapOnError);
-        imap.once(&#x27;close&#x27;, imapOnClose);
-        imap.once(&#x27;end&#x27;, imapOnEnd);
-
-        if (options.hasOwnProperty(&#x27;onmail&#x27;)) {
-            imap.on(&#x27;mail&#x27;, options.onmail);
-        }
-
-        if (options.hasOwnProperty(&#x27;onexpunge&#x27;)) {
-            imap.on(&#x27;expunge&#x27;, options.onexpunge);
-        }
-
-        if (options.hasOwnProperty(&#x27;onupdate&#x27;)) {
-            imap.on(&#x27;update&#x27;, options.onupdate);
-        }
-
-        imap.connect();
-    });
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-host: &#x27;imap.gmail.com&#x27;,
-port: 993,
-tls: true,
-authTimeout: 3000
-    }
-};
-
-imaps.<span class="apidocCodeKeywordSpan">connect</span>(config).then(function (connection) {
-
-    return connection.openBox(&#x27;INBOX&#x27;).then(function () {
-var searchCriteria = [
-    &#x27;UNSEEN&#x27;
-];
-
-var fetchOptions = {
-...</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.imap-simple.imapSimple.getParts" id="apidoc.element.imap-simple.imapSimple.getParts">
-        function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>getParts
-        <span class="apidocSignatureSpan">(struct, parts)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function getParts(struct, parts) {
-    parts = parts || [];
-    for (var i = 0; i &#x3c; struct.length; i++) {
-        if (Array.isArray(struct[i])) {
-            getParts(struct[i], parts);
-        } else if (struct[i].partID) {
-            parts.push(struct[i]);
-        }
-    }
-    return parts;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-// retrieve only the headers of the messages
-return connection.search(searchCriteria, fetchOptions);
-    }).then(function (messages) {
-
-var attachments = [];
-
-messages.forEach(function (message) {
-    var parts = imaps.<span class="apidocCodeKeywordSpan">getParts</span>(message.attributes.struct);
-    attachments = attachments.concat(parts.filter(function (part) {
-        return part.disposition &#x26;&#x26; part.disposition.type === &#x27;ATTACHMENT&#x27;;
-    }).map(function (part) {
-        // retrieve the attachments only of the messages with attachments
-        return connection.getPartData(message, part)
-            .then(function (partData) {
-                return {
-...</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.imap-simple.imapSimple.parseHeader" id="apidoc.element.imap-simple.imapSimple.parseHeader">
-        function <span class="apidocSignatureSpan">imap-simple.imapSimple.</span>parseHeader
-        <span class="apidocSignatureSpan">(str, noDecode)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function parseHeader(str, noDecode) {
-  var lines = str.split(RE_CRLF),
-      len = lines.length,
-      header = {},
-      state = {
-        buffer: undefined,
-        encoding: undefined,
-        consecutive: false,
-        replaces: undefined,
-        curReplace: undefined,
-        remainder: undefined
-      },
-      m, h, i, val;
-
-  for (i = 0; i &#x3c; len; ++i) {
-    if (lines[i].length === 0)
-      break; // empty line separates message&#x27;s header and body
-    if (lines[i][0] === &#x27;\t&#x27; || lines[i][0] === &#x27; &#x27;) {
-      if (!Array.isArray(header[h]))
-        continue; // ignore invalid first line
-      // folded header content
-      val = lines[i];
-      if (!noDecode) {
-        if (RE_ENCWORD_END.test(lines[i - 1])
-            &#x26;&#x26; RE_ENCWORD_BEGIN.test(val)) {
-          // RFC2047 says to *ignore* leading whitespace in folded header values
-          // for adjacent encoded-words ...
-          val = val.substring(1);
-        }
-      }
-      header[h][header[h].length - 1] += val;
-    } else {
-      m = RE_HDR.exec(lines[i]);
-      if (m) {
-        h = m[1].toLowerCase().trim();
-        if (m[2]) {
-          if (header[h] === undefined)
-            header[h] = [m[2]];
-          else
-            header[h].push(m[2]);
-        } else
-          header[h] = [&#x27;&#x27;];
-      } else
-        break;
-    }
-  }
-  if (!noDecode) {
-    var hvs;
-    for (h in header) {
-      hvs = header[h];
-      for (i = 0, len = header[h].length; i &#x3c; len; ++i)
-        hvs[i] = decodeWords(hvs[i], state);
-    }
-  }
-
-  return header;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-        var part = {
-            which: info.which,
-            size: info.size,
-            body: body
-        };
-
-        if (isHeader.test(part.which)) {
-            part.body = Imap.<span class="apidocCodeKeywordSpan">parseHeader</span>(part.body);
-        }
-
-        messageParts.push(part);
-    });
-}
-
-function messageOnAttributes(attrs) {
-...</pre></li>
-    </ul>
-
-
 
 
 </div>

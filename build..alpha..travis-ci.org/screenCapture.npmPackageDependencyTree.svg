@@ -6,7 +6,7 @@
 <tspan x="10" y="58">node_modules</tspan>
 <tspan x="10" y="74">└─┬ imap-simple@3.1.0 </tspan>
 <tspan x="10" y="90">  ├── es6-promise@4.1.0 </tspan>
-<tspan x="10" y="106">  ├── iconv-lite@0.4.15 </tspan>
+<tspan x="10" y="106">  ├── iconv-lite@0.4.16 </tspan>
 <tspan x="10" y="122">  ├─┬ imap@0.8.19 </tspan>
 <tspan x="10" y="138">  │ ├─┬ readable-stream@1.1.14 </tspan>
 <tspan x="10" y="154">  │ │ ├── core-util-is@1.0.2 </tspan>
