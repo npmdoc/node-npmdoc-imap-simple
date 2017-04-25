@@ -1,6 +1,6 @@
 # npmdoc-imap-simple
 
-#### api documentation for  [imap-simple (v3.1.0)](https://github.com/chadxz/imap-simple#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-imap-simple.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-imap-simple) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-imap-simple.svg)](https://travis-ci.org/npmdoc/node-npmdoc-imap-simple)
+#### basic api documentation for  [imap-simple (v3.1.0)](https://github.com/chadxz/imap-simple#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-imap-simple.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-imap-simple) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-imap-simple.svg)](https://travis-ci.org/npmdoc/node-npmdoc-imap-simple)
 
 #### Wrapper over node-imap, providing a simpler api for common use cases
 
